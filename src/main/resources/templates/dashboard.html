@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head(~{::title})}"><title>Minha conta · Conecta Saúde</title></head>
+<body>
+<main th:replace="~{fragments/layout :: shell(~{::section}, 'dashboard')}">
+<section>
+    <h2>Você está conectado!</h2>
+    <p class="account" sec:authentication="name">E-mail da conta</p>
+    <p>Escolha uma área para continuar.</p>
+    <nav class="areas" aria-label="Áreas disponíveis">
+        <a sec:authorize="hasAnyRole('ALUNO','ADMIN')" th:href="@{/aluno/inicio}">Área do aluno <span aria-hidden="true">→</span></a>
+        <a sec:authorize="hasAnyRole('PROFESSOR','ADMIN')" th:href="@{/professor/inicio}">Área do professor <span aria-hidden="true">→</span></a>
+        <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/inicio}">Área do administrador <span aria-hidden="true">→</span></a>
+    </nav>
+</section>
+</main>
+</body>
+</html>

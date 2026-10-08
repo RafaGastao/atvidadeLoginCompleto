@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head(pageTitle)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:replace="${pageTitle}">Conecta Saúde</title>
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<main th:fragment="shell(content, activePage)" class="container">
+    <header>
+        <a class="logo" th:href="@{/}" aria-label="Conecta Saúde — início">
+            <svg viewBox="0 0 32 32" width="36" height="36" aria-hidden="true"><path d="M16 27 5 16C-3 7 9-1 16 8 23-1 35 7 27 16Z" fill="none" stroke="currentColor" stroke-width="2.3"/><path d="M5 16h6l3-6 4 12 3-6h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </a>
+        <h1>Bem-vindo ao Conecta Saúde</h1>
+        <p sec:authorize="isAnonymous()">Acesse ou crie sua conta para continuar.</p>
+        <p sec:authorize="isAuthenticated()">Seu espaço no Conecta Saúde.</p>
+    </header>
+    <section class="card">
+        <nav sec:authorize="isAnonymous()" class="tabs" aria-label="Acesso à conta">
+            <a th:href="@{/login}" th:classappend="${activePage == 'login'} ? 'active'" th:attr="aria-current=${activePage == 'login' ? 'page' : null}">Entrar</a>
+            <a th:href="@{/cadastro}" th:classappend="${activePage == 'register'} ? 'active'" th:attr="aria-current=${activePage == 'register' ? 'page' : null}">Cadastrar</a>
+        </nav>
+        <div th:replace="${content}"></div>
+        <form sec:authorize="isAuthenticated()" class="logout" th:action="@{/logout}" method="post">
+            <button class="secondary" type="submit">Sair da conta</button>
+        </form>
+    </section>
+    <footer>Conecta Saúde · Aprender para se cuidar</footer>
+</main>
+</body>
+</html>

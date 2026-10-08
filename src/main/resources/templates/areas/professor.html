@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head(~{::title})}"><title>Área do professor · Conecta Saúde</title></head>
+<body>
+<main th:replace="~{fragments/layout :: shell(~{::section}, 'professor')}">
+<section>
+    <h2>Área do professor</h2>
+    <p>Este é o espaço do professor no Conecta Saúde.</p>
+    <p>Seu acesso foi realizado com sucesso.</p>
+    <a class="back" th:href="@{/painel}">← Voltar à minha conta</a>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head(~{::title})}"><title>Cadastrar · Conecta Saúde</title></head>
+<body>
+<main th:replace="~{fragments/layout :: shell(~{::section}, 'register')}">
+<section>
+    <form th:action="@{/cadastro}" th:object="${form}" method="post">
+        <fieldset class="profile-choice" aria-describedby="perfil-error">
+            <legend>Você é:</legend>
+            <div class="profile-options">
+                <label><input type="radio" th:field="*{perfil}" value="ALUNO" required> Aluno</label>
+                <label><input type="radio" th:field="*{perfil}" value="PROFESSOR" required> Professor</label>
+            </div>
+            <small class="field-error" id="perfil-error" th:errors="*{perfil}"></small>
+        </fieldset>
+        <label for="displayName">Nome</label>
+        <input id="displayName" th:field="*{displayName}" autocomplete="name" minlength="2" maxlength="80" placeholder="Digite seu nome" aria-describedby="name-error" required>
+        <small class="field-error" id="name-error" th:errors="*{displayName}"></small>
+        <label for="email">E-mail</label>
+        <input id="email" th:field="*{email}" type="email" autocomplete="email" maxlength="254" placeholder="Digite seu e-mail" aria-describedby="email-error" required>
+        <small class="field-error" id="email-error" th:errors="*{email}"></small>
+        <label for="password">Senha</label>
+        <input id="password" name="password" type="password" autocomplete="new-password" minlength="9" maxlength="72" pattern="(?=.*[0-9])(?=.*[\p{P}\p{S}]).{9,72}" title="Mínimo de 9 caracteres, com número e símbolo." placeholder="Crie sua senha" aria-describedby="password-hint password-error" required>
+        <small id="password-hint">Mínimo de 9 caracteres, com número e símbolo.</small>
+        <small class="field-error" id="password-error" th:errors="*{password}"></small>
+        <button type="submit">Criar conta</button>
+    </form>
+    <p class="switch">Já tem uma conta? <a th:href="@{/login}">Entrar</a></p>
+</section>
+</main>
+</body>
+</html>

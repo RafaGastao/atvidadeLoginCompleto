@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/layout :: head(~{::title})}"><title>Área do administrador · Conecta Saúde</title></head>
+<body>
+<main th:replace="~{fragments/layout :: shell(~{::section}, 'admin')}">
+<section>
+    <h2>Área do administrador</h2>
+    <p>Libere o acesso de professor para as contas autorizadas.</p>
+    <div class="alert success" role="status" th:if="${param.atualizado}">Perfil atualizado. A pessoa deve sair e entrar novamente para usar o novo acesso.</div>
+    <p th:if="${#lists.isEmpty(contas)}">Nenhuma conta cadastrada.</p>
+    <article class="account-card" th:each="conta : ${contas}">
+        <strong th:text="${conta.displayName}">Nome</strong>
+        <p class="account" th:text="${conta.email}">E-mail</p>
+        <p th:text="${conta.roles.contains(T(br.com.loginseguro.user.Perfil).ADMIN) ? 'Administrador' : (conta.roles.contains(T(br.com.loginseguro.user.Perfil).PROFESSOR) ? 'Professor' : 'Aluno')}">Perfil</p>
+        <form th:if="${conta.roles.contains(T(br.com.loginseguro.user.Perfil).ALUNO) and !conta.roles.contains(T(br.com.loginseguro.user.Perfil).ADMIN) and !conta.roles.contains(T(br.com.loginseguro.user.Perfil).PROFESSOR)}"
+              th:action="@{/admin/usuarios/{id}/professor(id=${conta.id})}" method="post">
+            <button type="submit">Tornar professor</button>
+        </form>
+    </article>
+    <a class="back" th:href="@{/painel}">← Voltar à minha conta</a>
+</section>
+</main>
+</body>
+</html>
