@@ -1,0 +1,4 @@
+MONGODB_URI=mongodb+srv://USUARIO:SENHA_URL_ENCODED@SEU_CLUSTER.mongodb.net/login_seguro?retryWrites=true&w=majority&tls=true
+MONGODB_DATABASE=login_seguro
+PORT=8081
+APP_SESSION_COOKIE_SECURE=false
