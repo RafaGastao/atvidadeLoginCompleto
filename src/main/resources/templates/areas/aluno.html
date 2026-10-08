@@ -5,8 +5,29 @@
 <main th:replace="~{fragments/layout :: shell(~{::section}, 'aluno')}">
 <section>
     <h2>Área do aluno</h2>
-    <p>Este é o espaço do aluno no Conecta Saúde.</p>
-    <p>Seu acesso foi realizado com sucesso.</p>
+    <p>Escolha o nível do jogo.</p>
+    <form th:action="@{/aluno/inicio}" method="get">
+        <fieldset class="niveis-jogo">
+            <legend>Nível de dificuldade</legend>
+            <label>
+                <input type="radio" name="nivel" value="FACIL" th:checked="${nivelSelecionado != null and nivelSelecionado.name() == 'FACIL'}" required>
+                <span><strong>Fácil</strong><small>Para começar.</small></span>
+            </label>
+            <label>
+                <input type="radio" name="nivel" value="MEDIO" th:checked="${nivelSelecionado != null and nivelSelecionado.name() == 'MEDIO'}" required>
+                <span><strong>Médio</strong><small>Para avançar.</small></span>
+            </label>
+            <label>
+                <input type="radio" name="nivel" value="DIFICIL" th:checked="${nivelSelecionado != null and nivelSelecionado.name() == 'DIFICIL'}" required>
+                <span><strong>Difícil</strong><small>Para se desafiar.</small></span>
+            </label>
+        </fieldset>
+        <button type="submit">Confirmar nível</button>
+    </form>
+    <div class="alert success nivel-confirmado" role="status" th:if="${nivelSelecionado != null}">
+        Nível selecionado: <strong th:text="${nivelSelecionado.nome}">Fácil</strong>.
+    </div>
+    <small>O jogo estará disponível em uma próxima etapa.</small>
     <a class="back" th:href="@{/painel}">← Voltar à minha conta</a>
 </section>
 </main>

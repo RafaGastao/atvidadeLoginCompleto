@@ -53,3 +53,11 @@ footer { margin-top: 24px; text-align: center; color: var(--muted); font-size: 1
 .profile-options label { display: flex; align-items: center; gap: 8px; flex: 1; margin: 0; padding: 12px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; }
 .profile-options label:has(input:checked) { border-color: var(--accent); background: var(--background); }
 .profile-options input { width: 18px; height: 18px; margin: 0; padding: 0; accent-color: var(--accent); }
+.niveis-jogo { margin: 20px 0 0; padding: 0; border: 0; }
+.niveis-jogo legend { font-size: 14px; font-weight: bold; }
+.niveis-jogo label { display: flex; align-items: center; gap: 14px; padding: 16px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; }
+.niveis-jogo label:has(input:checked) { border-color: var(--accent); background: var(--background); }
+.niveis-jogo input { width: 18px; height: 18px; margin: 0; accent-color: var(--accent); flex-shrink: 0; }
+.niveis-jogo strong { font-size: 16px; }
+.niveis-jogo small { margin-top: 2px; font-weight: normal; }
+.nivel-confirmado { margin: 16px 0 12px; }
