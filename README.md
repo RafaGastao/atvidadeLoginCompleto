@@ -47,7 +47,7 @@ No NetBeans, execute a classe AplicacaoLoginSeguro com a raiz do projeto como di
 
 No Atlas, crie um usuário de banco com acesso ao banco login_seguro e autorize o IP público do seu computador. Na URI, codifique os caracteres especiais da senha para URL. Mantenha `tls=true` para proteger a conexão com o Atlas.
 
-APP_SESSION_COOKIE_SECURE=false é usado no site local com HTTP. Se publicar o site com HTTPS, altere para true.
+
 
 
 
