@@ -43,18 +43,11 @@ mvn spring-boot:run
 
 Acesse http://localhost:8081.
 
-No NetBeans, execute a classe `AplicacaoLoginSeguro` com a raiz do projeto como diretório de trabalho.
+No NetBeans, execute a classe AplicacaoLoginSeguro com a raiz do projeto como diretório de trabalho.
 
-No Atlas, crie um usuário de banco com acesso ao banco `login_seguro` e autorize o IP público do seu computador. Na URI, codifique os caracteres especiais da senha para URL. Mantenha `tls=true` para proteger a conexão com o Atlas.
+No Atlas, crie um usuário de banco com acesso ao banco login_seguro e autorize o IP público do seu computador. Na URI, codifique os caracteres especiais da senha para URL. Mantenha `tls=true` para proteger a conexão com o Atlas.
 
-`APP_SESSION_COOKIE_SECURE=false` é usado no site local com HTTP. Se publicar o site com HTTPS, altere para `true`.
+APP_SESSION_COOKIE_SECURE=false é usado no site local com HTTP. Se publicar o site com HTTPS, altere para true.
 
-Não envie `application-local.properties`, `acesso-admin.local.txt` ou `.env` ao GitHub. O arquivo `application-local.properties.example` pode ser publicado, pois contém apenas exemplos. A conta administrativa mencionada existe no Atlas da apresentação; ela não é criada automaticamente em outro banco.
 
-Gitflow
 
-- `main`: versão estável para entrega.
-- `develop`: integração das alterações.
-- `feature/*`: desenvolvimento de funcionalidades ou documentação.
-- `release/*`: preparação de uma versão.
-- `hotfix/*`: correções urgentes da versão estável.
